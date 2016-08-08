@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="App">
+<html lang="en" data-ng-app="App">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +22,7 @@
       </div>
     </nav>
 
-    <div class="container" ng-controller="EditorController">
+    <div class="container" data-ng-controller="EditorController">
       <div class="row">
         <div class="col-sm-3">
           <div class="panel panel-default">
@@ -30,23 +30,23 @@
               <h3 class="panel-title"><button class="btn btn-primary btn-xs pull-right" data-ng-click="CreateClick()">New</button> My Notes</h3>
             </div>
             <div class="panel-body">
-              <p ng-if="!notes.length">No notes</p>
+              <p data-ng-if="!notes.length">No notes</p>
               <ul class="list-group">
-                <li class="list-group-item" ng-repeat="note in notes" ng-click="view($index)" ng-class="{active: note.id == content.id}">{{note.title}}<br />
+                <li class="list-group-item" data-ng-repeat="note in notes" data-ng-click="view($index)" data-ng-class="{active: note.id == content.id}">{{note.title}}<br />
                 <small>{{note.date | date:'short'}}</small></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="col-sm-9">
-          <div class="panel panel-default" ng-hide="editing">
+          <div class="panel panel-default" data-ng-hide="editing">
             <div class="panel-heading">
               <h3 class="panel-title">{{content.title}} <button class="btn btn-primary btn-xs pull-right" data-ng-click="EditClick()">Edit</button></h3>
             </div>
             <div class="panel-body" markdown="{{content.content}}"></div>
             <div class="panel-footer">{{content.date | date:'short'}}</div>
           </div>
-          <form name="editor" class="panel panel-default" ng-show="editing">
+          <form name="editor" class="panel panel-default" data-ng-show="editing">
             <div class="panel-heading">
               <h3 class="panel-title"><input type="text" class="form-control" placeholder="New Note" required data-ng-model="content.title"/></h3>
             </div>
