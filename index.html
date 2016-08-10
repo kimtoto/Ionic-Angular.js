@@ -63,8 +63,8 @@
               </div>
             </div>
             <div class="panel-footer">
-              <button class="btn btn-primary" data-ng-click="saveClick()">Save</button>
-              <button class="btn btn-danger pull-right" data-ng-click="deleteClick()">Delete</button>
+              <button class="btn btn-primary" data-ng-click="saveClick()" data-ng-disabled="editor.$invalid">Save</button>
+              <button class="btn btn-danger pull-right" data-ng-click="deleteClick()" data-ng-if="content.id">Delete</button>
             </div>
           </form>
         </div>

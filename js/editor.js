@@ -38,7 +38,26 @@ angular.module('App')
   };
 
   $scope.deleteClick = function() {
-    console.log("deleteClick");
+      $http.delete('/notes/' + $scope.content.id).
+        success(function(data) {
+          var found = -1;
+          angular.forEach($scope.notes, function(note, index) {
+            if (note.id === $scope.content.id) {
+                console.log("found === index::" + found);
+                found = index;
+            }
+          });
+
+          if (found > 0) {
+            $scope.notes.splice(found, 1);
+            console.log("found < 0");
+          }
+
+          $scope.content = {
+            title: '',
+            content:  ''
+          };
+        });
   };
 
   $http.get('/notes').success(function (data) {
