@@ -1,7 +1,7 @@
 angular.module('App')
 .controller('EditorController', function ($scope, $http) {
   $scope.editing = true;
-
+  
   $scope.view = function(index) {
     $scope.editing = false;
     $scope.content = $scope.notes[index];
@@ -57,13 +57,20 @@ angular.module('App')
             title: '',
             content:  ''
           };
+        })
+        .error(function (err) {
+            $scope.error = "Could not load delete note";
+            console.log($scope.error);
         });
+
   };
 
   $http.get('/notes').success(function (data) {
     $scope.notes = data;
-  }).error(function (err) {
-    $scope.error = 'Could not load notes';
+  })
+  .error(function (err) {
+      $scope.error = 'Could not load notes';
+      console.log($scope.error);
   });
 
 });
